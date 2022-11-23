@@ -1,47 +1,38 @@
-# Logistic Application
+# Always On Time
 
-Simple inventory tracking web application for logistics company.
+Simple student attendance tracking system.
 
 # Propose
 
-Logistic service platform offering services to help manage the supply chain including warehouse management, order fulfillment, and shipping orders. The platform allows logistics company managers and drivers to view, update, and post-delivery information.
+The main objective of this project is to keep a track of student's attendance and let faculty get detailed reports of students for better academic management.
 
 # Functionalities and work division:
 
-User registration/login @Yunxiao Li
 
-Managers can assign and modify new deliveries for each driver @Tianyu Lu
-
-Drivers can view their delivery assignments and click finish when their job is done but need to upload images as proof. @Yunxiao Li
 
 # Check It Out
 
-https://logistic-backend-five.vercel.app/
 # Install, Build & Run
 
-- Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com) on your machine
-- Clone the repository: `git clone https://github.com/TimLu7/logistic-backend.git`
-- Install dependencies: `npm install`
-- Run Node server: `npm start`
-- Open `http://localhost:3000/` on your browser to see the web application
+
 
 # Screenshots
 
 1. Login Page
 
-   ![screen shot1](screenshots/login.PNG)
+   ![screen shot1]()
 
 2. Register Page
 
-   ![screen shot1](screenshots/register.PNG)
+   ![screen shot1]()
 
-3. Driver Page
+3. Student Page
 
-   ![screen shot1](screenshots/driver.PNG)
+   ![screen shot1]()
 
-4. Manager Page
+4. Teacher Page
 
-   ![screen shot1](screenshots/manager.PNG)
+   ![screen shot1]()
 
 # Author
 
