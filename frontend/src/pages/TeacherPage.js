@@ -209,3 +209,6 @@ function TeacherPage() {
 TeacherPage.propTypes = {};
 
 export default TeacherPage;
+
+
+// Clean struckture, easy to read!
