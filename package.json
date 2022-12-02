@@ -1,11 +1,12 @@
 {
   "name": "logistic-backend",
   "version": "1.0.0",
-  "description": "this is the backend for the logistic application",
+  "description": "this is the backend for the AlwaysOnTime application",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "postinstall": "cd frontend && npm install && npm run build",
     "dev": "nodemon server.js"
   },
   "author": "Tianyu Lu && Yunxiao Li",
@@ -17,12 +18,13 @@
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
+    "md5": "^2.3.0",
     "mongodb": "^4.10.0",
     "nodemon": "^2.0.20"
   },
   "devDependencies": {
     "eslint": "^8.25.0",
-    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react": "^7.31.11",
     "prettier": "2.7.1"
   }
 }

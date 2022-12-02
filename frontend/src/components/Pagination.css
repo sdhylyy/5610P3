@@ -1,0 +1,19 @@
+.page-number{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+.page-number>span{
+    padding-left:10px;
+}
+.aot-pagination{
+    display: flex;
+    justify-content: space-evenly;
+}
+.aot-pagination .rows-per-page{
+    display: flex;
+}
+.rows-per-page label{
+    padding-top: 5px;
+    padding-right: 10px;
+}

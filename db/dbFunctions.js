@@ -1,8 +1,9 @@
 const {MongoClient} = require('mongodb');
-const { ObjectId } = require('mongodb');
-const dbName = 'logistic_system';
-const coll = 'items';
+// const { ObjectId } = require('mongodb');
+const dbName = 'AlwaysOnTime';
+const coll = 'grades';
 const collUser = 'users';
+const coll2='checkin';
 const url = process.env.MOGO_URL || "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 
@@ -10,18 +11,22 @@ const db = client.db(dbName);
 
 module.exports = {
 
-  getAllDocs: async () => {
+  getAllGrades: async () => {
     return await db.collection(coll).find().toArray();
   },
 
-  addDoc: async (doc) => {
-    return await db.collection(coll).insertOne(doc);
+  searchGrades:async (obj) => {
+    return await db.collection(coll).find(obj).toArray();
   },
 
-  deleteDoc: async (id) => {
-    const filter = { _id: new ObjectId(id) };
-    return await db.collection(coll).deleteOne(filter);
+  addCourse: async (item) => {
+    return await db.collection(coll).insertOne(item);
   },
+
+  findOneCourse:async (item)=>{
+    return await db.collection(coll).findOne({course:item.course,name:item.name});
+  },
+
   findUser:async(name)=>{
     let obj=db.collection(collUser).findOne({username:name});
     return await db.collection(collUser).findOne({username:name});
@@ -32,12 +37,16 @@ module.exports = {
   findByName:async(name)=>{
     return await db.collection(coll).find({name:name}).toArray();
   },
-  findItemById:async(id)=>{
-    return await db.collection(coll).findOne({
-      _id:ObjectId(id)
-    });
+  getCheckInByName:async(name)=>{
+    return await db.collection(coll2).find({name:name}).toArray();
   },
-  updateItemById:async(id,item)=>{
-    return await db.collection(coll).updateOne({_id:ObjectId(id)},{$set:item});
-  }
+  giveGrades:async(item)=>{
+    return await db.collection(coll).updateOne({name:item.name,course:item.course},{$set:item});
+  },
+  addCheckIn:async(item)=>{
+    return await db.collection(coll2).insertOne(item);
+  },
+  findOneCheckIn:async (item)=>{
+    return await db.collection(coll2).findOne({course:item.course,name:item.name,date:item.date});
+  },
 };

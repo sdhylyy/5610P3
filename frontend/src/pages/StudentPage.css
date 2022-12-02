@@ -1,0 +1,47 @@
+.logout {
+    cursor: pointer;
+    color: blue !important;
+    text-decoration: underline !important;
+    padding-left: 20px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    margin-bottom: 30px;
+}
+
+#h1-symbol {
+    color: #ff69b4;
+}
+
+.centering {
+    text-align: center;
+}
+
+.aot-form {
+    justify-content: center;
+}
+
+.aot-form select,
+.aot-form input {
+    width: 200px;
+}
+
+.aot-form label {
+    margin-right: 10px;
+}
+
+.aot-form>div {
+    margin-right: 20px;
+}
+
+.aot-button{
+    width: auto !important;
+}
+.aot-head{
+    display: flex;
+}
+.aot-table{
+    margin: 20px;
+    width: -webkit-fill-available;
+}
