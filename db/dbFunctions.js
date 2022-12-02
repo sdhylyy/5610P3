@@ -11,6 +11,7 @@ const db = client.db(dbName);
 
 module.exports = {
 
+  // For each function, need to wrap it in try/catch. Need client.connect() at the beginning of the function and await client.close() at the end of the function.
   getAllGrades: async () => {
     return await db.collection(coll).find().toArray();
   },
