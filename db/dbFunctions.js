@@ -50,3 +50,6 @@ module.exports = {
     return await db.collection(coll2).findOne({course:item.course,name:item.name,date:item.date});
   },
 };
+
+
+// Can considere put user and course db separately so it will be easier to read.
