@@ -1,54 +1,51 @@
-# Logistic Application
+# Always On Time - Simple student attendance tracking system
 
-Simple inventory tracking web application for logistics company.
+## Propose:
 
-# Propose
+It is always a painful and repetitive task to track students' attendance manually in class. In this project, we are going to create an educational attendance system to track the attendance of the students. The main objective of this project is to keep a track of students' attendance and let faculty get detailed reports of students for better academic management. The attendance system can provide a quick, easy, and transparent view of the classes and students. Our application will improve the overall management efficiency and make sure each student will be taken care of in time.
 
-Logistic service platform offering services to help manage the supply chain including warehouse management, order fulfillment, and shipping orders. The platform allows logistics company managers and drivers to view, update, and post-delivery information.
+## Milestones for class:
 
-# Functionalities and work division:
+- \*\*60% progress: First we discussed our design mockups about what functionalities we are going to provide and what each page should looks like. Then, We initialized our project with an basic MERN structure. We successfully connected our database with MongoDB Atlas. We can successfully send and received data from our database and correctly display on localhost. We also complete our basic structure of routing and the draft frontend page so we can check if we can display the data at the right place.
 
-User registration/login @Yunxiao Li
+- \*\*80% progress: This part we are mainly focused on our frontend. We created our teacher and student page with JavaScript and React hooks an to achieve basic functionalities such as letting the teacher to add courses and view student's attendance status. The student can add courses and check-in for certain course for attendance reference.
 
-Managers can assign and modify new deliveries for each driver @Tianyu Lu
+## install, Build & Run
 
-Drivers can view their delivery assignments and click finish when their job is done but need to upload images as proof. @Yunxiao Li
+These instructions use yarn commands. You can use the npm equivalents if you'd prefer.
 
-# Check It Out
+1. Clone this repository.
+2. Cd to the 'BeHere' directory and run 'yarn install'. This will install the depencies for both the back-end and front-end, and will create a static build of the front-end.
+3. To create a database, install mongodb locally and run the local server in the background. It should be set up to run on localhost:27017. Then, from the 'BeHere' directory, run 'yarn run initMockDb'. This will create a be-here database on your local MongoDB connection with user and event collections, each pre-populated with 1k+ documents.
+4. Run 'yarn start'.
+5. In the web browser of your choice, go to [http://localhost:3001/](http://localhost:3001/)
+6. Enjoy!
 
-https://logistic-backend-five.vercel.app/
-# Install, Build & Run
+## Design Documents
 
-- Install [Node](https://nodejs.org) and [npm](https://www.npmjs.com) on your machine
-- Clone the repository: `git clone https://github.com/TimLu7/logistic-backend.git`
-- Install dependencies: `npm install`
-- Run Node server: `npm start`
-- Open `http://localhost:3000/` on your browser to see the web application
+-Description and user stories: https://docs.google.com/document/d/12V1P8yGPkhpSFf-dfbj4vnjPKYjAc06nRRu3WkD9qec/edit?usp=sharing
+-Design mockup: https://www.figma.com/file/SeZmeSeuku920XDQ0dvYYT/P2?node-id=0%3A1&t=AWxRZibqbvMk9w8P-1
 
-# Screenshots
+## Authors
+
+Yunxiao Li && Tianyu Lu
+
+## Screen Shots
 
 1. Login Page
 
-   ![screen shot1](screenshots/login.PNG)
+   ![screen shot1]()
 
 2. Register Page
 
-   ![screen shot1](screenshots/register.PNG)
+   ![screen shot1]()
 
-3. Driver Page
+3. Student Page
 
-   ![screen shot1](screenshots/driver.PNG)
+   ![screen shot1]()
 
-4. Manager Page
+4. Teacher Page
 
-   ![screen shot1](screenshots/manager.PNG)
+   ![screen shot1]()
 
-# Author
-
-Tianyu Lu &&
-Yunxiao Li
-
-
-# Class link
-
-https://johnguerra.co/classes/webDevelopment_fall_2022/
+## Check It Out
