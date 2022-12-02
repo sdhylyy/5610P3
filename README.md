@@ -22,8 +22,8 @@ Use yarn or npm
 
 ## Design Documents
 
--Description and user stories: https://docs.google.com/document/d/12V1P8yGPkhpSFf-dfbj4vnjPKYjAc06nRRu3WkD9qec/edit?usp=sharing
--Design mockup: https://www.figma.com/file/SeZmeSeuku920XDQ0dvYYT/P2?node-id=0%3A1&t=AWxRZibqbvMk9w8P-1
+- Description and user stories: https://docs.google.com/document/d/12V1P8yGPkhpSFf-dfbj4vnjPKYjAc06nRRu3WkD9qec/edit?usp=sharing
+- Design mockup: https://www.figma.com/file/SeZmeSeuku920XDQ0dvYYT/P2?node-id=0%3A1&t=AWxRZibqbvMk9w8P-1
 
 ## Authors
 
