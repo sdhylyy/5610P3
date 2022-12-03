@@ -34,8 +34,8 @@ function StudentPage() {
 
     const navigate = useNavigate();
 
+    //log out
     const handleLogout = (e) => {
-        e.preventDefault();
         fetch(logoutURL).then(
             (res) => {
                 if (res.ok) {
@@ -43,9 +43,10 @@ function StudentPage() {
                 }
             }
         )
-
+        e.preventDefault();
     }
 
+    //init course select list
     const initCourseList = () => {
         fetch(initCourseListURL).then(
             (response) => {
@@ -70,6 +71,7 @@ function StudentPage() {
 
     UseCheckMsg();
 
+    //load data into table
     const loadData = () => {
         fetch(loadDataURL).then(
             (res) => {
@@ -142,6 +144,7 @@ function StudentPage() {
     }, [tableData, rowsPerPage, currentPage])
 
 
+    //add course
     const handleAddCourse = (e) => {
         e.preventDefault();
         let course = document.getElementById("courseList").value;
@@ -169,6 +172,7 @@ function StudentPage() {
                     alert(data.message);
                 } else {
                     alert("add course succeed!");
+                    loadData();
                 }
             }
             ).catch((error) => {
@@ -186,6 +190,7 @@ function StudentPage() {
         setRowsPerPage(rowPerPage);
     }
 
+    //student check in
     const checkinfunc = (obj) => {
         obj.date = new Date().toDateString();
         fetch(checkInURL, {
@@ -216,13 +221,14 @@ function StudentPage() {
             console.error(error);
         })
     }
-
+   //show check in records
     const showCheckIn = (obj) => {
         let checkInModal = new Modal(document.getElementById('checkInModal'));
         checkInModal.show();
         loadModalData(obj);
     }
 
+    //load check in data
     const loadModalData=(obj)=>{
         fetch(loadCheckInDataURL, {
             method: 'POST',

@@ -12,7 +12,7 @@ const path = require('path');
 const {courseList} = require('../data/courseList');
 
 router.get('/api/allGrades', async (req, res) => {
-  if (!req.session.login||!req.session.user.position=="teacher") {
+  if (!req.session.login||!(req.session.user.position=="teacher")) {
     res.redirect(loginRedirect);
     return;
   }
@@ -150,7 +150,7 @@ router.post('/api/getCheckInByName', async (req, res) => {
 router.get('/api/logout',async (req, res) => {
   req.session.user = null;
   req.session.login = false;
-  return;
+  return res.json();
 })
 
 router.post('/api/search',async (req, res) => {

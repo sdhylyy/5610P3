@@ -6,6 +6,19 @@
 }
 
 .aot-modal{
-    width:800ox;
-    max-width: 800px;
+    width:800px !important;
+    max-width: 800px !important;
+}
+
+.grading-label{
+    display: flex;
+    justify-content: space-around;
+}
+.grading-inputgroup{
+    display: flex;
+    padding-top: 10px;
+}
+.grading-input-label{
+    padding-top: 5px;
+    padding-right: 10px;
 }

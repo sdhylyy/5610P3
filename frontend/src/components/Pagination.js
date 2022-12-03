@@ -35,29 +35,34 @@ function Pagination(props) {
         },[rowsPerPage]
     )
 
+    //jump to first page
     const toFirstPage = (e) => {
         if (currPage != 1) {
             setCurrPage(1);
         }
     }
 
+    //jump to last page
     const toLastPage = (e) => {
         if (currPage != totalPages) {
             setCurrPage(totalPages);
         }
     }
 
+    //to next page
     const toNextPage = (e) => {
         if (currPage != totalPages) {
             setCurrPage(currPage + 1);
         }
     }
 
+    //to pre page
     const toPrePage = (e) => {
         if (currPage != 1) {
             setCurrPage(currPage - 1);
         }
     }
+    //set rows per page
     const handleRowsPerPage=(e)=>{
         setRowsPerPage(e.target.value);
     }
