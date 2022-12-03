@@ -22,29 +22,34 @@ Use yarn or npm
 
 ## Design Documents
 
--Description and user stories: https://docs.google.com/document/d/12V1P8yGPkhpSFf-dfbj4vnjPKYjAc06nRRu3WkD9qec/edit?usp=sharing
--Design mockup: https://www.figma.com/file/SeZmeSeuku920XDQ0dvYYT/P2?node-id=0%3A1&t=AWxRZibqbvMk9w8P-1
-
+- Description and user stories: https://docs.google.com/document/d/12V1P8yGPkhpSFf-dfbj4vnjPKYjAc06nRRu3WkD9qec/edit?usp=sharing
+- Design mockup: https://www.figma.com/file/SeZmeSeuku920XDQ0dvYYT/P2?node-id=0%3A1&t=AWxRZibqbvMk9w8P-1
+- Presentation Slides: https://docs.google.com/presentation/d/1dNCW6HOd5D2e5dw98cOePedNqozdg-yi5-T0WrEOO34/edit?usp=sharing
 ## Authors
 
 Yunxiao Li && Tianyu Lu
 
 ## Screen Shots
 
-1. Login Page
+1. Teacher Page
 
-   ![screen shot1]()
+   ![screen shot1](screenshots/1.png)
 
-2. Register Page
+2. Student Page 
 
-   ![screen shot1]()
+   ![screen shot1](screenshots/2.png)
 
-3. Student Page
+3. Student check in
 
-   ![screen shot1]()
+   ![screen shot1](screenshots/3.png)
 
-4. Teacher Page
 
-   ![screen shot1]()
+4. Login Page
+
+   ![screen shot1](screenshots/7.png)
+
+5. Register Page
+
+   ![screen shot1](screenshots/6.png)
 
 ## Check It Out
