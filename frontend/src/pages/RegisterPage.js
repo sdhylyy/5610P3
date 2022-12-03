@@ -3,8 +3,8 @@ import UseCheckMsg from "../hooks/UseCheckMsg";
 
 function RegisterPage() {
 
-    const deployURL="http://localhost:3000/";
-    // const deployURL="https://intense-lowlands-69751.herokuapp.com/";
+    // const deployURL="http://localhost:3000/";
+    const deployURL="https://alwaysontime.herokuapp.com/";
 
     const registerURL = deployURL+'api/register/';
 

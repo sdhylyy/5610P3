@@ -11,8 +11,8 @@ import { Modal } from 'bootstrap'
 
 function TeacherPage() {
 
-    const deployURL = "http://localhost:3000/";
-    // const deployURL="https://intense-lowlands-69751.herokuapp.com/";
+    // const deployURL = "http://localhost:3000/";
+    const deployURL="https://alwaysontime.herokuapp.com/";
 
     const logoutURL = deployURL + 'api/logout';
     const loadDataURL = deployURL + 'api/allGrades';
