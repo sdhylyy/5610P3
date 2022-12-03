@@ -1,4 +1,4 @@
-# Always On Time - Simple student attendance tracking system
+# Always On Time - Simple attendance tracking system
 
 ## Propose:
 
@@ -16,7 +16,7 @@ Use yarn or npm
 
 1. Clone this repository.
 2. run 'npm i'.
-3. Run 'node server'.
+3. Run 'node start'.
 4. In the web browser of your choice, go to [http://localhost:3000/](http://localhost:3000/)
 
 ## Design Documents
@@ -43,7 +43,6 @@ Yunxiao Li && Tianyu Lu
 
    ![screen shot1](screenshots/3.png)
 
-
 4. Login Page
 
    ![screen shot1](screenshots/7.png)
@@ -52,4 +51,6 @@ Yunxiao Li && Tianyu Lu
 
    ![screen shot1](screenshots/6.png)
 
+## Course Link
+- https://johnguerra.co/classes/webDevelopment_fall_2022/
 ## Check It Out
