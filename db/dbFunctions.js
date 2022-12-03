@@ -37,8 +37,8 @@ module.exports = {
   findByName:async(name)=>{
     return await db.collection(coll).find({name:name}).toArray();
   },
-  getCheckInByName:async(name)=>{
-    return await db.collection(coll2).find({name:name}).toArray();
+  getCheckInByName:async(obj)=>{
+    return await db.collection(coll2).find(obj).toArray();
   },
   giveGrades:async(item)=>{
     return await db.collection(coll).updateOne({name:item.name,course:item.course},{$set:item});

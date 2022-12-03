@@ -4,56 +4,67 @@ import "./Pagination.css";
 
 function Pagination(props) {
 
-    const defaultRowPerPage = 10;
+    const defaultRowPerPage = 5;
     const [currPage, setCurrPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(defaultRowPerPage);
     const [totalPages,setTotalPages]=useState(parseInt((props.totalNumber - 1) / defaultRowPerPage + 1));
 
     useEffect(
         ()=>{
-            props.callbackRef.current=toFirstPage;
             props.pageChange(currPage);
             props.rowPerPageChange(rowsPerPage);
         },[]
     )
     useEffect(()=>{
         setCurrPage(1);
-        setTotalPages(parseInt((props.totalNumber - 1) / defaultRowPerPage + 1));
-    },[props.totalNumber]
+        setTotalPages(parseInt((props.totalNumber - 1) / rowsPerPage + 1));
+    },[props.totalNumber,setTotalPages]
 
     )
+    useEffect(
+        ()=>{
+            props.pageChange(currPage);
+        },[currPage]
+    )
 
+    useEffect(
+        ()=>{
+            setCurrPage(1);
+            setTotalPages(parseInt((props.totalNumber - 1) / rowsPerPage + 1));
+            props.rowPerPageChange(rowsPerPage);
+        },[rowsPerPage]
+    )
+
+    //jump to first page
     const toFirstPage = (e) => {
         if (currPage != 1) {
             setCurrPage(1);
-            props.pageChange(1);
         }
     }
 
+    //jump to last page
     const toLastPage = (e) => {
         if (currPage != totalPages) {
             setCurrPage(totalPages);
-            props.pageChange(totalPages);
         }
     }
 
+    //to next page
     const toNextPage = (e) => {
         if (currPage != totalPages) {
             setCurrPage(currPage + 1);
-            props.pageChange(currPage + 1);
         }
     }
 
+    //to pre page
     const toPrePage = (e) => {
         if (currPage != 1) {
             setCurrPage(currPage - 1);
-            props.pageChange(currPage - 1);
         }
     }
+    //set rows per page
     const handleRowsPerPage=(e)=>{
         setRowsPerPage(e.target.value);
-        setTotalPages(parseInt((props.totalNumber - 1) / e.target.value + 1));
-        props.rowPerPageChange(e.target.value);
     }
     return (
         <div className="aot-pagination">
@@ -108,6 +119,5 @@ Pagination.propTypes = {
     totalNumber: PropTypes.number.isRequired,
     pageChange: PropTypes.func.isRequired,
     rowPerPageChange: PropTypes.func.isRequired,
-    callbackRef:PropTypes.object.isRequired
 };
 export default Pagination;

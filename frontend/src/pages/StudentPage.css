@@ -43,5 +43,5 @@ h1 {
 }
 .aot-table{
     margin: 20px;
-    width: -webkit-fill-available;
+    width: -webkit-fill-available !important;
 }

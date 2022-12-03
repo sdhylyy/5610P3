@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./StudentPage.css";
 import Clock from "../components/Clock";
 import Pagination from "../components/Pagination";
+import Checkin from '../images/checkin.png';
+import View from '../images/view.png';
+import { createRoot } from "react-dom/client";
+import { Modal } from 'bootstrap'
 
 function StudentPage() {
 
@@ -13,19 +17,25 @@ function StudentPage() {
     const logoutURL = deployURL + 'api/logout';
     const initCourseListURL = deployURL + 'api/getCourseList';
     const addCourseURL = deployURL + 'api/addCourse';
-    const loadDataURL= deployURL + 'api/getByName';
+    const loadDataURL = deployURL + 'api/getByName';
+    const checkInURL = deployURL + 'api/checkin';
+    const loadCheckInDataURL= deployURL + 'api/getCheckInByName';
 
     const [tableData, setTableData] = useState([]);
-    const [rowsPerPage,setRowsPerPage]=useState(0);
-    const [currentPage,setCurrentPage]=useState(1);
-    const [totalNumber,setTotalNumber]=useState(0);
-    const initPagitionFunc=useRef(null);
-    const table=useRef(null);
+    const [rowsPerPage, setRowsPerPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalNumber, setTotalNumber] = useState(0);
+    const [modalTableData, setModalTableData] = useState([]);
+    const [modalRowsPerPage, setModalRowsPerPage] = useState(0);
+    const [modalCurrentPage, setModalCurrentPage] = useState(1);
+    const [modalTotalNumber, setModalTotalNumber] = useState(0);
+    const table = useRef(null);
+    const modalTable=useRef(null);
 
     const navigate = useNavigate();
 
+    //log out
     const handleLogout = (e) => {
-        e.preventDefault();
         fetch(logoutURL).then(
             (res) => {
                 if (res.ok) {
@@ -33,9 +43,10 @@ function StudentPage() {
                 }
             }
         )
-
+        e.preventDefault();
     }
 
+    //init course select list
     const initCourseList = () => {
         fetch(initCourseListURL).then(
             (response) => {
@@ -60,22 +71,25 @@ function StudentPage() {
 
     UseCheckMsg();
 
-    const loadData=()=>{
+    //load data into table
+    const loadData = () => {
         fetch(loadDataURL).then(
             (res) => {
                 if (res.redirected) {
                     window.location.href = res.url;
+                } else if (!res.ok) {
+                    throw new Error();
                 } else {
                     return res.json()
                 }
             }
         ).then(
-            (data)=>{
-                console.log(data);
-                setTableData(()=>data);
+            (data) => {
+                // console.log(data);
+                setTableData(() => data);
                 setTotalNumber(data.length);
             }
-        ).catch((error)=>{
+        ).catch((error) => {
             console.error(error);
         })
     }
@@ -87,37 +101,50 @@ function StudentPage() {
         loadData();
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         // console.log(table.current);
         // console.log(table.current.hasChildNodes());
-        table.current.innerHTML="";
-        console.log("df:"+rowsPerPage);
+        table.current.innerHTML = "";
+        // console.log("df:"+rowsPerPage);
 
-        let start=rowsPerPage*(currentPage-1);
-        for(let i=start;i<start+rowsPerPage;i++){
-            if(i>=tableData.length){
+        let start = rowsPerPage * (currentPage - 1);
+        for (let i = start; i < start + rowsPerPage; i++) {
+            if (i >= tableData.length) {
                 break;
             }
             const row = table.current.insertRow();
             const cell1 = row.insertCell(0);
-            const cell2 = row.insertCell(1);
+            const cell2 = row.insertCell(1)
             const cell3 = row.insertCell(2);
             const cell4 = row.insertCell(3);
             const cell5 = row.insertCell(4);
-          
-            cell1.innerHTML = i+1;
+
+            cell1.innerHTML = i + 1;
             cell2.innerHTML = tableData[i].name;
             cell3.innerHTML = tableData[i].course;
-          
-            if(tableData[i].grades){
+
+            if (tableData[i].grades) {
                 cell4.innerHTML = tableData[i].grades;
             }
+            let obj = {
+                "course": tableData[i].course,
+                "name":tableData[i].name
+            };
+            const root = createRoot(cell5);
+            root.render(
+                <>
+                    <img src={Checkin} alt="check in" title="check in" className="operation-icon" onClick={() => checkinfunc(obj)} />
+                    <img src={View} alt="view check in records" title="view check in records"
+                        className="operation-icon" onClick={() => showCheckIn(obj)} />
+                </>
+            )
 
         }
 
-    },[tableData,rowsPerPage,currentPage])
+    }, [tableData, rowsPerPage, currentPage])
 
 
+    //add course
     const handleAddCourse = (e) => {
         e.preventDefault();
         let course = document.getElementById("courseList").value;
@@ -134,6 +161,8 @@ function StudentPage() {
                 (response) => {
                     if (response.redirected) {
                         window.location.href = response.url;
+                    } else if (!response.ok) {
+                        throw new Error();
                     } else {
                         return response.json()
                     }
@@ -143,6 +172,7 @@ function StudentPage() {
                     alert(data.message);
                 } else {
                     alert("add course succeed!");
+                    loadData();
                 }
             }
             ).catch((error) => {
@@ -151,16 +181,111 @@ function StudentPage() {
         }
     };
 
-    const onPageChange=(currPage)=>{
+    const onPageChange = (currPage) => {
         setCurrentPage(currPage);
         return;
     }
-    const onRowPerPageChange=(rowPerPage)=>{
-        console.log("rowPerPage:"+rowPerPage);
+    const onRowPerPageChange = (rowPerPage) => {
+        // console.log("rowPerPage:"+rowPerPage);
         setRowsPerPage(rowPerPage);
     }
 
+    //student check in
+    const checkinfunc = (obj) => {
+        obj.date = new Date().toDateString();
+        fetch(checkInURL, {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(
+            (response) => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else if (!response.ok) {
+                    throw new Error();
+                } else {
+                    return response.json()
+                }
+            }
+        ).then((data) => {
+            console.log(data);
+            if (data.message) {
+                alert(data.message);
+            } else {
+                alert("check in succeed!");
+            }
+        }
+        ).catch((error) => {
+            console.error(error);
+        })
+    }
+   //show check in records
+    const showCheckIn = (obj) => {
+        let checkInModal = new Modal(document.getElementById('checkInModal'));
+        checkInModal.show();
+        loadModalData(obj);
+    }
 
+    //load check in data
+    const loadModalData=(obj)=>{
+        fetch(loadCheckInDataURL, {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(
+            (response) => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else if (!response.ok) {
+                    throw new Error();
+                } else {
+                    return response.json()
+                }
+            }
+        ).then((data) => {
+            console.log(data);
+            setModalTableData(() => data);
+            setModalTotalNumber(data.length);
+        }
+        ).catch((error) => {
+            console.error(error);
+        })
+    }
+
+    const onModalPageChange=(curr)=>{
+        setModalCurrentPage(curr);
+        return;
+    }
+
+    const onModalRowPerPageChange=(curr)=>{
+        setModalRowsPerPage(curr);
+    }
+
+    useEffect(() => {
+        modalTable.current.innerHTML = "";
+
+        let start = modalRowsPerPage * (modalCurrentPage - 1);
+        for (let i = start; i < start + modalRowsPerPage; i++) {
+            if (i >= modalTableData.length) {
+                break;
+            }
+            const row = modalTable.current.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1)
+            const cell3 = row.insertCell(2);
+            const cell4 = row.insertCell(3);
+
+            cell1.innerHTML = i + 1;
+            cell2.innerHTML = modalTableData[i].name;
+            cell3.innerHTML = modalTableData[i].course;
+            cell4.innerHTML = modalTableData[i].date;
+        }
+
+    }, [modalTableData, modalRowsPerPage, modalCurrentPage])
 
     return (
         <>
@@ -188,11 +313,9 @@ function StudentPage() {
                     </select>
                 </div>
                 <div className="form-group">
-                    <input
-                        type="submit"
-                        className="btn btn-info btn-md aot-button"
-                        defaultValue="submit"
-                    />
+                    <div className="form-group">
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </form>
             <table className="table aot-table table-striped" id="gradesTable">
@@ -207,8 +330,38 @@ function StudentPage() {
                 </thead>
                 <tbody ref={table}></tbody>
             </table>
-            <Pagination totalNumber={totalNumber} pageChange={onPageChange} rowPerPageChange={onRowPerPageChange} callbackRef={initPagitionFunc}/>
+            <Pagination totalNumber={totalNumber} pageChange={onPageChange} rowPerPageChange={onRowPerPageChange}/>
+            <div className="modal fade" id="checkInModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex={-1} aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog aot-modal">
+                    <div className="modal-dialog modal-dialog-scrollable aot-modal">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5" id="staticBackdropLabel">Check in records</h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                            </div>
+                            <div className="modal-body">
+                                <table className="table aot-table table-striped" id="modalTable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">name</th>
+                                            <th scope="col">course</th>
+                                            <th scope="col">date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody ref={modalTable}></tbody>
+                                </table>
+                            </div>
+                            <Pagination totalNumber={modalTotalNumber} pageChange={onModalPageChange} rowPerPageChange={onModalRowPerPageChange}/>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
+
     );
 }
 
