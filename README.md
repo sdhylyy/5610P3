@@ -15,10 +15,9 @@ It is always a painful and repetitive task to track students' attendance manuall
 Use yarn or npm
 
 1. Clone this repository.
-2. run 'yarn install'.
-3. To create a database, install mongodb locally and run the local server in the background.
-4. Run 'yarn start'.
-5. In the web browser of your choice, go to [http://localhost:3000/](http://localhost:3000/)
+2. run 'npm i'.
+3. Run 'node server'.
+4. In the web browser of your choice, go to [http://localhost:3000/](http://localhost:3000/)
 
 ## Design Documents
 
