@@ -12,10 +12,10 @@ const path = require('path');
 const {courseList} = require('../data/courseList');
 
 router.get('/api/allGrades', async (req, res) => {
-  if (!req.session.login||!req.session.user.position=="teacher") {
-    res.redirect(loginRedirect);
-    return;
-  }
+  // if (!req.session.login||!req.session.user.position=="teacher") {
+  //   res.redirect(loginRedirect);
+  //   return;
+  // }
   try {
     const docs = await dbFunctions.getAllGrades();
     res.json(docs);
@@ -64,10 +64,10 @@ router.post('/api/register', async (req, res) => {
 });
 
 router.post('/api/addCourse', async (req, res) => {
-  if (!req.session.login||!req.session.user.position=="student") {
-    res.redirect(loginRedirect);
-    return;
-  }
+  // if (!req.session.login||!req.session.user.position=="student") {
+  //   res.redirect(loginRedirect);
+  //   return;
+  // }
   let data={course:req.body.course,name:req.session.user.username};
   try {
     let item=await dbFunctions.findOneCourse(data);
@@ -84,10 +84,10 @@ router.post('/api/addCourse', async (req, res) => {
 });
 
 router.post('/api/giveGrades', async (req, res) => {
-  if (!req.session.login||!req.session.user.position=="teacher") {
-    res.redirect(loginRedirect);
-    return;
-  }
+  // if (!req.session.login||!req.session.user.position=="teacher") {
+  //   res.redirect(loginRedirect);
+  //   return;
+  // }
   try {
     const data = await dbFunctions.giveGrades(req.body);
     res.json(data);
@@ -98,13 +98,13 @@ router.post('/api/giveGrades', async (req, res) => {
 });
 
 router.get('/api/getByName', async (req, res) => {
-  if (!req.session.login) {
-    res.redirect(loginRedirect);
-    return;
-  }
+  // if (!req.session.login) {
+  //   res.redirect(loginRedirect);
+  //   return;
+  // }
   try {
-    const docs = await dbFunctions.findByName(req.session.user.username);
-    // const docs = await dbFunctions.findByName('student1');
+    // const docs = await dbFunctions.findByName(req.session.user.username);
+    const docs = await dbFunctions.findByName('student1');
     res.json(docs);
   } catch (err) {
     console.error('# Get Error', err);
@@ -113,13 +113,14 @@ router.get('/api/getByName', async (req, res) => {
 });
 
 router.post('/api/checkin', async (req, res) => {
-  if (!req.session.login) {
-    res.redirect(loginRedirect);
-    return;
-  }
+  // if (!req.session.login) {
+  //   res.redirect(loginRedirect);
+  //   return;
+  // }
   try {
     let data=req.body;
-    data.name=req.session.user.username;
+    // data.name=req.session.user.username;
+    data.name='student1';
     if(await dbFunctions.findOneCheckIn(data)){
       res.json({message: 'this course is already check in'});
       return;
@@ -132,13 +133,13 @@ router.post('/api/checkin', async (req, res) => {
   }
 });
 
-router.get('/api/getCheckInByName', async (req, res) => {
-  if (!req.session.login) {
-    res.redirect(loginRedirect);
-    return;
-  }
+router.post('/api/getCheckInByName', async (req, res) => {
+  // if (!req.session.login) {
+  //   res.redirect(loginRedirect);
+  //   return;
+  // }
   try {
-    const docs = await dbFunctions.getCheckInByName(req.session.user.username);
+    const docs = await dbFunctions.getCheckInByName(req.body);
     res.json(docs);
   } catch (err) {
     console.error('# Get Error', err);
@@ -153,10 +154,10 @@ router.get('/api/logout',async (req, res) => {
 })
 
 router.post('/api/search',async (req, res) => {
-  if (!req.session.login) {
-    res.redirect(loginRedirect);
-    return;
-  }
+  // if (!req.session.login) {
+  //   res.redirect(loginRedirect);
+  //   return;
+  // }
 
   try {
     const docs = await dbFunctions.searchGrades(req.body);

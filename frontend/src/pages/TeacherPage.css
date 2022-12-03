@@ -1,0 +1,11 @@
+.operation-icon{
+    width:32px;
+    height:32px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.aot-modal{
+    width:800ox;
+    max-width: 800px;
+}
