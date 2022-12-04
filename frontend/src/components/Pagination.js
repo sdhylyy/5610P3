@@ -64,7 +64,7 @@ function Pagination(props) {
     }
     //set rows per page
     const handleRowsPerPage=(e)=>{
-        setRowsPerPage(e.target.value);
+        setRowsPerPage(parseInt(e.target.value));
     }
     return (
         <div className="aot-pagination">

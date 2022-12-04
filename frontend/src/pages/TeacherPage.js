@@ -86,6 +86,7 @@ function TeacherPage() {
         // console.log("df:" + rowsPerPage);
 
         let start = rowsPerPage * (currentPage - 1);
+
         for (let i = start; i < start + rowsPerPage; i++) {
             if (i >= tableData.length) {
                 break;
