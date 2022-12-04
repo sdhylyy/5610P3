@@ -10,12 +10,12 @@ It is always a painful and repetitive task to track students' attendance manuall
 
 - \*\*80% progress: This part we are mainly focused on our frontend. We created our teacher and student page with JavaScript and React hooks an to achieve basic functionalities such as letting the teacher to add courses and view student's attendance status. The student can add courses and check-in for certain course for attendance reference.
 
-## install, Build & Run
+## Install, Build & Run
 
 Use yarn or npm
 
 1. Clone this repository.
-2. run 'npm i'.
+2. Run 'npm i'.
 3. Run 'node start'.
 4. In the web browser of your choice, go to [http://localhost:3000/](http://localhost:3000/)
 
@@ -54,3 +54,4 @@ Yunxiao Li && Tianyu Lu
 ## Course Link
 - https://johnguerra.co/classes/webDevelopment_fall_2022/
 ## Check It Out
+- https://alwaysontime.herokuapp.com/
