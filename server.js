@@ -1,5 +1,4 @@
 const express = require('express');
-// const cors = require('cors');
 const router = require('./routes/routes');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
@@ -10,7 +9,6 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-// app.use(cors());
 
 // console.log(__dirname);
 app.use(express.static(path.join(__dirname, "frontend/build")));
