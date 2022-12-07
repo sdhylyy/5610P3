@@ -3,10 +3,7 @@ import UseCheckMsg from "../hooks/UseCheckMsg";
 
 function IndexPage() {
 
-    // const deployURL="http://localhost:3000/";
-    const deployURL="https://alwaysontime.herokuapp.com/";
-
-    const loginURL = deployURL+'api/login/';
+    const loginURL = '/api/login/';
 
     const handleSubmit=(e)=>{
         let name = document.getElementById("username").value;　

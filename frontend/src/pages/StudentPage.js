@@ -11,15 +11,12 @@ import { Modal } from 'bootstrap'
 
 function StudentPage() {
 
-    // const deployURL = "http://localhost:3000/";
-    const deployURL="https://alwaysontime.herokuapp.com/";
-
-    const logoutURL = deployURL + 'api/logout';
-    const initCourseListURL = deployURL + 'api/getCourseList';
-    const addCourseURL = deployURL + 'api/addCourse';
-    const loadDataURL = deployURL + 'api/getByName';
-    const checkInURL = deployURL + 'api/checkin';
-    const loadCheckInDataURL= deployURL + 'api/getCheckInByName';
+    const logoutURL = '/api/logout';
+    const initCourseListURL = '/api/getCourseList';
+    const addCourseURL = '/api/addCourse';
+    const loadDataURL = '/api/getByName';
+    const checkInURL = '/api/checkin';
+    const loadCheckInDataURL= '/api/getCheckInByName';
 
     const [tableData, setTableData] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(0);

@@ -11,14 +11,11 @@ import { Modal } from 'bootstrap'
 
 function TeacherPage() {
 
-    // const deployURL = "http://localhost:3000/";
-    const deployURL="https://alwaysontime.herokuapp.com/";
-
-    const logoutURL = deployURL + 'api/logout';
-    const loadDataURL = deployURL + 'api/allGrades';
-    const searchURL = deployURL + 'api/search';
-    const loadCheckInDataURL = deployURL + 'api/getCheckInByName';
-    const gradingURL=deployURL + 'api/giveGrades';
+    const logoutURL = '/api/logout';
+    const loadDataURL = '/api/allGrades';
+    const searchURL = '/api/search';
+    const loadCheckInDataURL = '/api/getCheckInByName';
+    const gradingURL='/api/giveGrades';
 
 
     const [tableData, setTableData] = useState([]);
