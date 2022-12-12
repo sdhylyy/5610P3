@@ -16,7 +16,7 @@ function StudentPage() {
     const addCourseURL = '/api/addCourse';
     const loadDataURL = '/api/getByName';
     const checkInURL = '/api/checkin';
-    const loadCheckInDataURL= '/api/getCheckInByName';
+    const loadCheckInDataURL = '/api/getCheckInByName';
 
     const [tableData, setTableData] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(0);
@@ -27,7 +27,7 @@ function StudentPage() {
     const [modalCurrentPage, setModalCurrentPage] = useState(1);
     const [modalTotalNumber, setModalTotalNumber] = useState(0);
     const table = useRef(null);
-    const modalTable=useRef(null);
+    const modalTable = useRef(null);
 
     const navigate = useNavigate();
 
@@ -125,14 +125,16 @@ function StudentPage() {
             }
             let obj = {
                 "course": tableData[i].course,
-                "name":tableData[i].name
+                "name": tableData[i].name
             };
             const root = createRoot(cell5);
             root.render(
                 <>
-                    <img src={Checkin} alt="check in" title="check in" className="operation-icon" onClick={() => checkinfunc(obj)} />
+                    <img src={Checkin} alt="check in" title="check in" className="operation-icon" onClick={() => checkinfunc(obj)} 
+                    tabindex="0" onKeyDown={(e)=>{if(e.key === "Enter")return checkinfunc(obj)}}/>
                     <img src={View} alt="view check in records" title="view check in records"
-                        className="operation-icon" onClick={() => showCheckIn(obj)} />
+                        className="operation-icon" onClick={() => showCheckIn(obj)} 
+                        tabindex="0" onKeyDown={(e)=>{if(e.key === "Enter")return showCheckIn(obj)}}/>
                 </>
             )
 
@@ -218,7 +220,7 @@ function StudentPage() {
             console.error(error);
         })
     }
-   //show check in records
+    //show check in records
     const showCheckIn = (obj) => {
         let checkInModal = new Modal(document.getElementById('checkInModal'));
         checkInModal.show();
@@ -226,7 +228,7 @@ function StudentPage() {
     }
 
     //load check in data
-    const loadModalData=(obj)=>{
+    const loadModalData = (obj) => {
         fetch(loadCheckInDataURL, {
             method: 'POST',
             body: JSON.stringify(obj),
@@ -253,12 +255,12 @@ function StudentPage() {
         })
     }
 
-    const onModalPageChange=(curr)=>{
+    const onModalPageChange = (curr) => {
         setModalCurrentPage(curr);
         return;
     }
 
-    const onModalRowPerPageChange=(curr)=>{
+    const onModalRowPerPageChange = (curr) => {
         setModalRowsPerPage(curr);
     }
 
@@ -286,77 +288,84 @@ function StudentPage() {
 
     return (
         <>
-            <div className="aot-head">
-                <a className="logout" id="LogoutAction" onClick={handleLogout} href="/">
-                    Logout
-                </a>
-                <Clock></Clock>
-            </div>
-            <h1 className="centering">
-                <span id="h1-symbol">❙&nbsp;</span>Student Page
-            </h1>
-            <form
-                id="registerCourse-form"
-                className="form-inline aot-form"
-                action="/"
-                method="post"
-                onSubmit={handleAddCourse}
-            >
-                <div className="form-group">
-                    <label htmlFor="courseList" className="text-info">
-                        Add Course:
-                    </label>
-                    <select className="form-select" name="courseList" id="courseList">
-                    </select>
+            <nav aria-label="log out">
+                <div className="aot-head">
+                    <a className="logout" id="LogoutAction" onClick={handleLogout} href="/">
+                        Logout
+                    </a>
+                    <Clock></Clock>
                 </div>
-                <div className="form-group">
+            </nav>
+            <header>
+                <h1 className="centering">
+                    <span id="h1-symbol">❙&nbsp;</span>Student Page
+                </h1>
+            </header>
+            <main>
+                <form
+                    id="registerCourse-form"
+                    className="form-inline aot-form"
+                    action="/"
+                    method="post"
+                    onSubmit={handleAddCourse}
+                >
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <label htmlFor="courseList" className="aoe-text">
+                            Add Course:
+                        </label>
+                        <select className="form-select" name="courseList" id="courseList">
+                        </select>
                     </div>
-                </div>
-            </form>
-            <table className="table aot-table table-striped" id="gradesTable">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">name</th>
-                        <th scope="col">course</th>
-                        <th scope="col">grade</th>
-                        <th scope="col">operation</th>
-                    </tr>
-                </thead>
-                <tbody ref={table}></tbody>
-            </table>
-            <Pagination totalNumber={totalNumber} pageChange={onPageChange} rowPerPageChange={onRowPerPageChange}/>
-            <div className="modal fade" id="checkInModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex={-1} aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div className="modal-dialog aot-modal">
-                    <div className="modal-dialog modal-dialog-scrollable aot-modal">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h1 className="modal-title fs-5" id="staticBackdropLabel">Check in records</h1>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-                            </div>
-                            <div className="modal-body">
-                                <table className="table aot-table table-striped" id="modalTable">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">name</th>
-                                            <th scope="col">course</th>
-                                            <th scope="col">date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody ref={modalTable}></tbody>
-                                </table>
-                            </div>
-                            <Pagination totalNumber={modalTotalNumber} pageChange={onModalPageChange} rowPerPageChange={onModalRowPerPageChange}/>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div className="form-group">
+                        <div className="form-group">
+                            <button type="submit" className="btn btn-primary aoe-btn-submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <table className="table aot-table table-striped" id="gradesTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">name</th>
+                            <th scope="col">course</th>
+                            <th scope="col">grade</th>
+                            <th scope="col">operation</th>
+                        </tr>
+                    </thead>
+                    <tbody ref={table}></tbody>
+                </table>
+                <Pagination totalNumber={totalNumber} pageChange={onPageChange} rowPerPageChange={onRowPerPageChange} id="studentMain" />
+                <div className="modal fade" id="checkInModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex={-1} aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div className="modal-dialog aot-modal">
+                        <div className="modal-dialog modal-dialog-scrollable aot-modal">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Check in records</h1>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                                </div>
+                                <div className="modal-body">
+                                    <table className="table aot-table table-striped" id="modalTable">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">name</th>
+                                                <th scope="col">course</th>
+                                                <th scope="col">date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ref={modalTable}></tbody>
+                                    </table>
+                                </div>
+                                <Pagination totalNumber={modalTotalNumber} pageChange={onModalPageChange} rowPerPageChange={onModalRowPerPageChange} id="studentModule" />
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
+
         </>
 
     );

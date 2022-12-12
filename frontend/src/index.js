@@ -4,14 +4,16 @@ import reportWebVitals from "./reportWebVitals";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import "bootstrap-4-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import "bootstrap-4-react";
+
 
 import IndexPage from "./pages/IndexPage.js";
 import RegisterPage from "./pages/RegisterPage.js";
 import StudentPage from "./pages/StudentPage.js";
 import TeacherPage from "./pages/TeacherPage.js";
+import "./index.css";
 
 
 const router = createBrowserRouter([

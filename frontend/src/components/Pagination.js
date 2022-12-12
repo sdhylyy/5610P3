@@ -68,7 +68,7 @@ function Pagination(props) {
     }
     return (
         <div className="aot-pagination">
-            <nav aria-label="Page navigation example">
+            <nav aria-label={`${props.id}_pagination`}>
                 <ul className="pagination">
                     <li className="page-item">
                         <a className="page-link" href="#" aria-label="Previous" onClick={toFirstPage}>
@@ -97,13 +97,13 @@ function Pagination(props) {
             </nav>
             <div className="rows-per-page">
                 <span>
-                    <label htmlFor="rowsPerPage" className="text-info">
+                    <label htmlFor={`${props.id}_rowsPerPage`} className="aoe-text">
                         Rows per Page:
                     </label>
                 </span>
                 <span>
                     <select value={rowsPerPage} onChange={handleRowsPerPage} 
-                    className="form-select" name="rowsPerPage" id="rowsPerPageList">
+                    className="form-select" id={`${props.id}_rowsPerPage`}>
                         <option value={5}>5</option>
                         <option value={10}>10</option>
                         <option value={20}>20</option>
@@ -119,5 +119,6 @@ Pagination.propTypes = {
     totalNumber: PropTypes.number.isRequired,
     pageChange: PropTypes.func.isRequired,
     rowPerPageChange: PropTypes.func.isRequired,
+    id:PropTypes.string.isRequired
 };
 export default Pagination;

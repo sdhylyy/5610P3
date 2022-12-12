@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import UseCheckMsg from "../hooks/UseCheckMsg";
 
 function RegisterPage() {
@@ -6,48 +6,50 @@ function RegisterPage() {
 
     const registerURL = '/api/register/';
 
-    const handleSubmit=(e)=>{
-        let name = document.getElementById("username").value;　
+    const handleSubmit = (e) => {
+        let name = document.getElementById("username").value;
         console.log(name);
-        let password = document.getElementById("password").value;　
+        let password = document.getElementById("password").value;
         console.log(password);
-        let position = document.getElementById("position").value;　
+        let position = document.getElementById("position").value;
         console.log(position);
-        if(!name||name===""){
+        if (!name || name === "") {
             alert("username mustn't be empty.");
             e.preventDefault();
             return false;
         }
-        if(!password||password===""){
+        if (!password || password === "") {
             alert("password mustn't be empty.");
             e.preventDefault();
             return false;
         }
-        if(!position||position===""){
+        if (!position || position === "") {
             alert("position mustn't be empty.");
             e.preventDefault();
             return false;
         }
-    
-    
-    　　return true;
+
+
+        return true;
     };
 
     UseCheckMsg();
 
     useEffect(() => {
-        document.getElementById("register-form").action =registerURL;
-    },[registerURL]); 
+        document.getElementById("register-form").action = registerURL;
+    }, [registerURL]);
 
     return (
         <>
-            <div>
+            <nav>
                 <a href="/" id="LogoutAction">
                     back
                 </a>
-            </div>
-            <div id="Register">
-                <h1 className="text-center text-info pt-5">Register</h1>
+            </nav>
+            <header>
+                <h1 className="text-center aoe-text pt-5">Register</h1>
+            </header>
+            <main>
                 <div className="container">
                     <div
                         id="Register-row"
@@ -63,7 +65,7 @@ function RegisterPage() {
                                     onSubmit={handleSubmit}
                                 >
                                     <div className="form-group">
-                                        <label htmlFor="username" className="text-info">
+                                        <label htmlFor="username" className="aoe-text">
                                             Username:
                                         </label>
                                         <br />
@@ -75,7 +77,7 @@ function RegisterPage() {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="password" className="text-info">
+                                        <label htmlFor="password" className="aoe-text">
                                             Password:
                                         </label>
                                         <br />
@@ -87,7 +89,7 @@ function RegisterPage() {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="position" className="text-info">
+                                        <label htmlFor="position" className="aoe-text">
                                             position:
                                         </label>
                                         <select className="form-select" name="position" id="position">
@@ -98,7 +100,7 @@ function RegisterPage() {
                                     <div className="form-group">
                                         <input
                                             type="submit"
-                                            className="btn btn-info btn-md"
+                                            className="btn btn-info btn-md aoe-btn-submit"
                                             defaultValue="submit"
                                         />
                                     </div>
@@ -107,7 +109,7 @@ function RegisterPage() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
         </>
     );
 }
