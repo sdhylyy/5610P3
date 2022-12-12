@@ -8,8 +8,63 @@ a{
 
 .aoe-btn-submit{
     background-color: #0D6EFD !important;
+    color: #ffffff !important;
 }
 
 .aoe-text{
     color: #10847C;
+}
+
+h1{
+    margin-bottom: 0.5rem;
+}
+
+label{
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-inline {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.form-inline .form-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.text-right {
+    text-align: right!important;
+}
+
+.form-inline label {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
 }
