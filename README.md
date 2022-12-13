@@ -29,6 +29,10 @@ Use yarn or npm
 
 Yunxiao Li && Tianyu Lu
 
+## color palette
+
+![screen shot1](screenshots/color palette.png)
+
 ## Screen Shots
 
 1. Teacher Page
@@ -56,6 +60,7 @@ Yunxiao Li && Tianyu Lu
 2. Added keyboard control, now you can use tab and shift+tab to control all functional elements
 3. Change the password into a secret text
 4. Improved the display effect on mobile
+5. Add customized icon
 
 ## Future Improvements
 1. Make UI better (eg. add background pictures). 
