@@ -29,8 +29,8 @@ Use yarn or npm
 
 Yunxiao Li && Tianyu Lu
 
-## color palette
-![color palette](screenshots/colorPalette.png)
+## color theme
+![color theme](screenshots/colorTheme.png)
 
 ## Screen Shots
 
