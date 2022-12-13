@@ -57,6 +57,11 @@ Yunxiao Li && Tianyu Lu
 3. Change the password into a secret text
 4. Improved the display effect on mobile
 
+## Future Improvements
+1. Make UI better (eg. add background pictures). 
+2. Make student record more intuitive and straightforward.
+3. Add location info as check-in for the better accuracy.  
+
 ## Course Link
 - https://johnguerra.co/classes/webDevelopment_fall_2022/
 ## Check It Out
