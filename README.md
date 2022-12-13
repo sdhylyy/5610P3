@@ -1,4 +1,4 @@
-# Always On Time - Simple academic management system
+# Always On Time - Simple Academic Management System
 
 ## Propose:
 
