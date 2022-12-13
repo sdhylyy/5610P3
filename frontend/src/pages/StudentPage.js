@@ -36,7 +36,7 @@ function StudentPage() {
         fetch(logoutURL).then(
             (res) => {
                 if (res.ok) {
-                    navigate("/?msg=logout succeed");
+                    navigate("/");
                 }
             }
         )
@@ -170,7 +170,6 @@ function StudentPage() {
                 if (data.message) {
                     alert(data.message);
                 } else {
-                    alert("add course succeed!");
                     loadData();
                 }
             }

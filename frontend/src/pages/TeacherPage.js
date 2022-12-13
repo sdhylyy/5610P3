@@ -38,7 +38,7 @@ function TeacherPage() {
         fetch(logoutURL).then(
             (res) => {
                 if (res.ok) {
-                    navigate("/?msg=logout succeed");
+                    navigate("/");
                 }
             }
         )
@@ -287,7 +287,6 @@ function TeacherPage() {
                 } else if (!response.ok) {
                     throw new Error();
                 } else {
-                    alert("operation succeed!");
                     gradingTable.current.hide();
                     handleSearchCourse();
                 }
