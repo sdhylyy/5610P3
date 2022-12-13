@@ -24,7 +24,7 @@ Use yarn or npm
 - Description and user stories: https://docs.google.com/document/d/12V1P8yGPkhpSFf-dfbj4vnjPKYjAc06nRRu3WkD9qec/edit?usp=sharing
 - Design mockup: https://www.figma.com/file/SeZmeSeuku920XDQ0dvYYT/P2?node-id=0%3A1&t=AWxRZibqbvMk9w8P-1
 - Presentation Slides: https://docs.google.com/presentation/d/1dNCW6HOd5D2e5dw98cOePedNqozdg-yi5-T0WrEOO34/edit?usp=sharing
- 
+- Userbility Study Report: https://docs.google.com/document/d/1k-NlNRZ6Vt5pG_wg8nM8XRwO5_cKi-pqYIzbPZ5aZlY/edit#
 ## Authors
 
 Yunxiao Li && Tianyu Lu
@@ -50,8 +50,14 @@ Yunxiao Li && Tianyu Lu
 5. Register Page
 
    ![screen shot1](screenshots/6.png)
+   
+## V2 Improvements
+1. Modified the errors and warnings in the axe, added contrast and so on
+2. Added keyboard control, now you can use tab and shift+tab to control all functional elements
+3. Change the password into a secret text
+4. Improved the display effect on mobile
 
 ## Course Link
 - https://johnguerra.co/classes/webDevelopment_fall_2022/
 ## Check It Out
-- https://alwaysontime.herokuapp.com/
+- https://alwaysontime2.herokuapp.com/
