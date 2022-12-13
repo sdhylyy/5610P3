@@ -31,7 +31,7 @@ Yunxiao Li && Tianyu Lu
 
 ## color palette
 
-![screen shot1](screenshots/color palette.png)
+	![color palette](screenshots/color palette.png)
 
 ## Screen Shots
 
