@@ -12,7 +12,7 @@ const path = require('path');
 const {courseList} = require('../data/courseList');
 
 router.get('/api/allGrades', async (req, res) => {
-  if (!req.session.login||!(req.session.user.position=="teacher")) {
+  if (!req.session.login||!isTeacher(req)) {
     res.redirect(loginRedirect);
     return;
   }
@@ -64,7 +64,7 @@ router.post('/api/register', async (req, res) => {
 });
 
 router.post('/api/addCourse', async (req, res) => {
-  if (!req.session.login||!req.session.user.position=="student") {
+  if (!req.session.login||!isStudent(req)) {
     res.redirect(loginRedirect);
     return;
   }
@@ -84,7 +84,7 @@ router.post('/api/addCourse', async (req, res) => {
 });
 
 router.post('/api/giveGrades', async (req, res) => {
-  if (!req.session.login||!req.session.user.position=="teacher") {
+  if (!req.session.login||!isTeacher(req)) {
     res.redirect(loginRedirect);
     return;
   }
@@ -113,7 +113,7 @@ router.get('/api/getByName', async (req, res) => {
 });
 
 router.post('/api/checkin', async (req, res) => {
-  if (!req.session.login) {
+  if (!req.session.login||!isStudent(req)) {
     res.redirect(loginRedirect);
     return;
   }
@@ -122,7 +122,6 @@ router.post('/api/checkin', async (req, res) => {
     data.name=req.session.user.username;
     // data.name='student1';
     if(await dbFunctions.findOneCheckIn(data)){
-      res.json({message: 'this course is already check in'});
       return;
     }
     const docs = await dbFunctions.addCheckIn(data);
@@ -154,7 +153,7 @@ router.get('/api/logout',async (req, res) => {
 })
 
 router.post('/api/search',async (req, res) => {
-  if (!req.session.login) {
+  if (!req.session.login||!isTeacher(req)) {
     res.redirect(loginRedirect);
     return;
   }
@@ -177,5 +176,13 @@ router.get('/api/getCourseList',async function(req, res) {
 router.get('*', async function(req, res) {
   res.sendFile('index.html', {root: path.join(__dirname, '../frontend/build')});
 });
+
+function isStudent(req){
+  return req.session.user.position==="student";
+}
+
+function isTeacher(req){
+  return req.session.user.position==="teacher";
+}
 
 module.exports = router;

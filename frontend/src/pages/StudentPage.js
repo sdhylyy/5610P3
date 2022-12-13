@@ -211,9 +211,7 @@ function StudentPage() {
             console.log(data);
             if (data.message) {
                 alert(data.message);
-            } else {
-                alert("check in succeed!");
-            }
+            } 
         }
         ).catch((error) => {
             console.error(error);
