@@ -270,6 +270,10 @@ function TeacherPage() {
             alert("invalid input");
             return;
         }
+        if(parseFloat(obj.grades)<0||parseFloat(obj.grades)>100){
+            alert("grades must within 0 to 100");
+            return;
+        }
         fetch(gradingURL, {
             method: 'POST',
             body: JSON.stringify(obj),
