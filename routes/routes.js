@@ -1,3 +1,4 @@
+// suggest user module type
 const express = require('express');
 const myDB = require('mongodb');
 
