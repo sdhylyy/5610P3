@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Clock.css";
-
+//suggest one component one directory
 function Clock(props) {
     const [date, setDate] = useState(new Date());
     let timerID=null;
