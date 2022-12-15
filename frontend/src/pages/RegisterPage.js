@@ -86,6 +86,7 @@ function RegisterPage() {
                                             name="password"
                                             id="password"
                                             className="form-control"
+                                            // Can use value={state} as the value for each input
                                         />
                                     </div>
                                     <div className="form-group">
