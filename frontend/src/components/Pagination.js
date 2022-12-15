@@ -71,11 +71,13 @@ function Pagination(props) {
             <nav aria-label={`${props.id}_pagination`}>
                 <ul className="pagination">
                     <li className="page-item">
+                
                         <a className="page-link" href="#" aria-label="Previous" onClick={toFirstPage}>
                             <span aria-hidden="true">«</span>
                         </a>
                     </li>
                     <li className="page-item" >
+                    // add aria-label to pass AXE devtools
                         <a className="page-link" href="#" onClick={toPrePage}>
                             Previous
                         </a>
