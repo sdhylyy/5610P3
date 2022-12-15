@@ -28,7 +28,7 @@ function StudentPage() {
     const [modalTotalNumber, setModalTotalNumber] = useState(0);
     const table = useRef(null);
     const modalTable = useRef(null);
-
+// can use useHistory since useNavigate is deprecated
     const navigate = useNavigate();
 
     //log out
