@@ -31,7 +31,7 @@ Yunxiao Li && Tianyu Lu
 
 ## color theme
 ![color theme](screenshots/colorTheme.png)
-
+you can add color number here to let user easily access the colors
 ## Screen Shots
 
 1. Teacher Page
